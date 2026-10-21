@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Optimized Leaf Material
-  m_Shader: {fileID: 4800000, guid: 9c508ae3a84fe0348b64fdf3704c3f40, type: 1}
+  m_Shader: {fileID: 4800000, guid: 36ca83a2689006740b20667684b1b729, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:

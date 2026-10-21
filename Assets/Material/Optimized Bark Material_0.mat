@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Optimized Bark Material_0
-  m_Shader: {fileID: 4800000, guid: e5eb1d2def93ee44ea5df60ede9715fa, type: 1}
+  m_Shader: {fileID: 4800000, guid: c8781fab646994242b476b2eb4a435c7, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:

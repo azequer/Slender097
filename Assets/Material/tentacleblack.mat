@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: tentacleblack
-  m_Shader: {fileID: 4800000, guid: aabb435432538e24bb2a34db52a7c38c, type: 1}
+  m_Shader: {fileID: 4800000, guid: c8781fab646994242b476b2eb4a435c7, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -27,6 +27,20 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _BumpSpecMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _TranslucencyMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _GlossMap
         second:
           m_Texture: {fileID: 0}
@@ -36,7 +50,7 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.078125
+        second: .078125
       data:
         first:
           name: _SquashAmount
@@ -45,11 +59,11 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.09803922, g: 0.09803922, b: 0.09803922, a: 1}
+        second: {r: .0980392173, g: .0980392173, b: .0980392173, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
           name: _Scale

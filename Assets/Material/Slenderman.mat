@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Slenderman
-  m_Shader: {fileID: 4800000, guid: 071dc047a3ce3a947b7dc48936d08211, type: 1}
+  m_Shader: {fileID: 4800000, guid: acd356bd880df3b46b478bdbbddb6fa2, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
