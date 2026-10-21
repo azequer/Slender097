@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Boo.Lang;
 using UnityEngine;
 
 [Serializable]
@@ -9,77 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMotor : MonoBehaviour
 {
-	[Serializable]
-	internal sealed class _0024SubtractNewPlatformVelocity_002453 : GenericGenerator<object>
-	{
-		[Serializable]
-		internal sealed class _0024 : GenericGeneratorEnumerator<object>, IEnumerator
-		{
-			internal Transform _0024platform_002454;
-
-			internal CharacterMotor _0024self__002455;
-
-			public _0024(CharacterMotor self_)
-			{
-				_0024self__002455 = self_;
-			}
-
-			public override bool MoveNext()
-			{
-				int result;
-				switch (_state)
-				{
-				default:
-					if (_0024self__002455.movingPlatform.enabled && (_0024self__002455.movingPlatform.movementTransfer == MovementTransferOnJump.InitTransfer || _0024self__002455.movingPlatform.movementTransfer == MovementTransferOnJump.PermaTransfer))
-					{
-						if (_0024self__002455.movingPlatform.newPlatform)
-						{
-							_0024platform_002454 = _0024self__002455.movingPlatform.activePlatform;
-							result = (Yield(2, new WaitForFixedUpdate()) ? 1 : 0);
-							break;
-						}
-						goto case 4;
-					}
-					goto IL_0124;
-				case 2:
-					result = (Yield(3, new WaitForFixedUpdate()) ? 1 : 0);
-					break;
-				case 3:
-					if (_0024self__002455.grounded && _0024platform_002454 == _0024self__002455.movingPlatform.activePlatform)
-					{
-						result = (Yield(4, 1) ? 1 : 0);
-						break;
-					}
-					goto case 4;
-				case 4:
-					_0024self__002455.movement.velocity = _0024self__002455.movement.velocity - _0024self__002455.movingPlatform.platformVelocity;
-					goto IL_0124;
-				case 1:
-					{
-						result = 0;
-						break;
-					}
-					IL_0124:
-					YieldDefault(1);
-					goto case 1;
-				}
-				return (byte)result != 0;
-			}
-		}
-
-		internal CharacterMotor _0024self__002456;
-
-		public _0024SubtractNewPlatformVelocity_002453(CharacterMotor self_)
-		{
-			_0024self__002456 = self_;
-		}
-
-		public override IEnumerator<object> GetEnumerator()
-		{
-			return new _0024(_0024self__002456);
-		}
-	}
-
 	public bool canControl;
 
 	public bool useFixedUpdate;
@@ -207,7 +135,7 @@ public class CharacterMotor : MonoBehaviour
 		{
 			grounded = true;
 			jumping.jumping = false;
-			StartCoroutine_Auto(SubtractNewPlatformVelocity());
+			StartCoroutine(SubtractNewPlatformVelocity());
 			SendMessage("OnLand", SendMessageOptions.DontRequireReceiver);
 		}
 		if (MoveWithPlatform())
@@ -378,7 +306,26 @@ public class CharacterMotor : MonoBehaviour
 
 	private IEnumerator SubtractNewPlatformVelocity()
 	{
-		return new _0024SubtractNewPlatformVelocity_002453(this).GetEnumerator();
+		Transform platform = null;
+		if (movingPlatform.enabled && (movingPlatform.movementTransfer == MovementTransferOnJump.InitTransfer || movingPlatform.movementTransfer == MovementTransferOnJump.PermaTransfer))
+		{
+			if (movingPlatform.newPlatform)
+			{
+				platform = movingPlatform.activePlatform;
+				yield return new WaitForFixedUpdate();
+			}
+			else
+			{
+				movement.velocity = movement.velocity - movingPlatform.platformVelocity;
+				yield break;
+			}
+			yield return new WaitForFixedUpdate();
+			if (grounded && platform == movingPlatform.activePlatform)
+			{
+				yield break;
+			}
+			movement.velocity = movement.velocity - movingPlatform.platformVelocity;
+		}
 	}
 
 	private bool MoveWithPlatform()

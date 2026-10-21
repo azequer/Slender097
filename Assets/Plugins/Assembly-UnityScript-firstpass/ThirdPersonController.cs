@@ -1,7 +1,5 @@
 using System;
-using Boo.Lang.Runtime;
 using UnityEngine;
-using UnityScript.Lang;
 
 [Serializable]
 [RequireComponent(typeof(CharacterController))]
@@ -25,7 +23,7 @@ public class ThirdPersonController : MonoBehaviour
 
 	public float landAnimationSpeed;
 
-	private object _animation;
+	private Animation _animation;
 
 	private CharacterState _characterState;
 
@@ -118,7 +116,7 @@ public class ThirdPersonController : MonoBehaviour
 	{
 		moveDirection = transform.TransformDirection(Vector3.forward);
 		_animation = (Animation)GetComponent(typeof(Animation));
-		if (!RuntimeServices.ToBool(_animation))
+		if (_animation == null)
 		{
 			Debug.Log("The character you would like to control doesn't have animations. Moving her might look weird.");
 		}
@@ -288,43 +286,45 @@ public class ThirdPersonController : MonoBehaviour
 		vector *= Time.deltaTime;
 		CharacterController characterController = (CharacterController)GetComponent(typeof(CharacterController));
 		collisionFlags = characterController.Move(vector);
-		if (RuntimeServices.ToBool(_animation))
+
+		if (_animation != null)
 		{
 			if (_characterState == CharacterState.Jumping)
 			{
 				if (!jumpingReachedApex)
 				{
-					RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { jumpPoseAnimation.name }), "speed", jumpAnimationSpeed);
-					RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { jumpPoseAnimation.name }), "wrapMode", WrapMode.ClampForever);
-					UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { jumpPoseAnimation.name }, typeof(MonoBehaviour));
+					_animation[jumpPoseAnimation.name].speed = jumpAnimationSpeed;
+					_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
+					_animation.CrossFade(jumpPoseAnimation.name);
 				}
 				else
 				{
-					RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { jumpPoseAnimation.name }), "speed", 0f - landAnimationSpeed);
-					RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { jumpPoseAnimation.name }), "wrapMode", WrapMode.ClampForever);
-					UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { jumpPoseAnimation.name }, typeof(MonoBehaviour));
+					_animation[jumpPoseAnimation.name].speed = 0f - landAnimationSpeed;
+					_animation[jumpPoseAnimation.name].wrapMode = WrapMode.ClampForever;
+					_animation.CrossFade(jumpPoseAnimation.name);
 				}
 			}
 			else if (!(characterController.velocity.sqrMagnitude >= 0.1f))
 			{
-				UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { idleAnimation.name }, typeof(MonoBehaviour));
+				_animation.CrossFade(idleAnimation.name);
 			}
 			else if (_characterState == CharacterState.Running)
 			{
-				RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { runAnimation.name }), "speed", Mathf.Clamp(characterController.velocity.magnitude, 0f, runMaxAnimationSpeed));
-				UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { runAnimation.name }, typeof(MonoBehaviour));
+				_animation[runAnimation.name].speed = Mathf.Clamp(characterController.velocity.magnitude, 0f, runMaxAnimationSpeed);
+				_animation.CrossFade(runAnimation.name);
 			}
 			else if (_characterState == CharacterState.Trotting)
 			{
-				RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { walkAnimation.name }), "speed", Mathf.Clamp(characterController.velocity.magnitude, 0f, trotMaxAnimationSpeed));
-				UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { walkAnimation.name }, typeof(MonoBehaviour));
+				_animation[walkAnimation.name].speed = Mathf.Clamp(characterController.velocity.magnitude, 0f, trotMaxAnimationSpeed);
+				_animation.CrossFade(walkAnimation.name);
 			}
 			else if (_characterState == CharacterState.Walking)
 			{
-				RuntimeServices.SetProperty(RuntimeServices.GetSlice(this, "_animation", new object[1] { walkAnimation.name }), "speed", Mathf.Clamp(characterController.velocity.magnitude, 0f, walkMaxAnimationSpeed));
-				UnityRuntimeServices.Invoke(_animation, "CrossFade", new object[1] { walkAnimation.name }, typeof(MonoBehaviour));
+				_animation[walkAnimation.name].speed = Mathf.Clamp(characterController.velocity.magnitude, 0f, walkMaxAnimationSpeed);
+				_animation.CrossFade(walkAnimation.name);
 			}
 		}
+
 		if (IsGrounded())
 		{
 			transform.rotation = Quaternion.LookRotation(moveDirection);
