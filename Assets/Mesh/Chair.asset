@@ -2,11 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!43 &4300000
 Mesh:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Chair
+  serializedVersion: 6
   m_SubMeshes:
   - firstByte: 0
     indexCount: 319
@@ -15,8 +15,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 181
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0.6875}
-      m_Extent: {x: 0.3125, y: 0.3125, z: 0.6875}
+      m_Center: {x: 0, y: 0, z: .6875}
+      m_Extent: {x: .3125, y: .3125, z: .6875}
   m_MeshCompression: 0
   m_IndexBuffer: a600a400a500a500ac00ac00ac00b000b100b100b100b100b100b2003f003f00a000a000a0009f000100080005000c000c0041004100090040000d001f001f009e009e009e009d00430002004200060006000b000b0044000f0045001d001d001500150015004800110049004900170017004c0013004d004d005700570056001a001b001800190050005100510053005300190052001b001b00550055001a005400180018004c004c008c001f001e001c001d0015008b008b009700970036004b0086004a00870058000c000c0035003500960089001200880016004200590059004600460047000700b300b4002400260021002000200076007600a10039003800230022002500270027008d008d008d005a002800290029005b005b008e002b002a002a005c005c008f002d002c002c00900090005d002e002f002f00910091005e0030005f005f006100610092006000310031006300630093006200320032009400940064003300650065009500950034004f0003004e008a003f003f0037003700370098000000100004001400a300a3009a009a009a00990003004600070007009c009c009c009b000a0000000e000400a700a70068006800680066006700690069006c006c006a006b006d006d00700070006e006f00710071007400740072007300750075007800780077003a00a200a200a500a5003b00a30004000400a800a8000e00a700a700aa00aa00aa00a900a600a700a700ad00ad00ad00ac003c003d007900ab00ab003e003e003e00ae007a007b007b00af00af004e003f003f007e007e007e007c007d007f008000810085008500800080008000850082008300840084001e001e001e000f001d001d004000400040001f001c00
   m_Skin: []
@@ -51,58 +51,58 @@ Mesh:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_BindPoses:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Colors:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
   m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0.6875}
-    m_Extent: {x: 0.3125, y: 0.3125, z: 0.6875}
+    m_Center: {x: 0, y: 0, z: .6875}
+    m_Extent: {x: .3125, y: .3125, z: .6875}
   m_MeshUsageFlags: 4
   m_MeshOptimized: 1

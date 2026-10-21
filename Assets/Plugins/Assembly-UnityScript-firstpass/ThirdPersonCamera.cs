@@ -74,7 +74,7 @@ public class ThirdPersonCamera : MonoBehaviour
 		}
 		if ((bool)controller)
 		{
-			CharacterController characterController = (CharacterController)_target.collider;
+			CharacterController characterController = (CharacterController)_target.GetComponent<Collider>();
 			centerOffset = characterController.bounds.center - _target.position;
 			headOffset = centerOffset;
 			headOffset.y = characterController.bounds.max.y - _target.position.y;
@@ -184,8 +184,8 @@ public class ThirdPersonCamera : MonoBehaviour
 		Quaternion quaternion = Quaternion.LookRotation(new Vector3(vector.x, 0f, vector.z));
 		Vector3 forward = Vector3.forward * distance + Vector3.down * height;
 		cameraTransform.rotation = quaternion * Quaternion.LookRotation(forward);
-		Ray ray = cameraTransform.camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 1f));
-		Ray ray2 = cameraTransform.camera.ViewportPointToRay(new Vector3(0.5f, clampHeadPositionScreenSpace, 1f));
+		Ray ray = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 1f));
+		Ray ray2 = cameraTransform.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, clampHeadPositionScreenSpace, 1f));
 		Vector3 point = ray.GetPoint(distance);
 		Vector3 point2 = ray2.GetPoint(distance);
 		float num = Vector3.Angle(ray.direction, ray2.direction);

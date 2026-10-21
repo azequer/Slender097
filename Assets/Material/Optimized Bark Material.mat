@@ -20,16 +20,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _TranslucencyMap
+          name: _BumpSpecMap
         second:
-          m_Texture: {fileID: 2800000, guid: cf08f695ddf6f4748a4605402f2df541, type: 1}
+          m_Texture: {fileID: 2800000, guid: c2d7755581a8e8a4e871b911b8912945, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _BumpSpecMap
+          name: _TranslucencyMap
         second:
-          m_Texture: {fileID: 2800000, guid: c2d7755581a8e8a4e871b911b8912945, type: 1}
+          m_Texture: {fileID: 2800000, guid: cf08f695ddf6f4748a4605402f2df541, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -45,7 +45,7 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
           name: _Scale

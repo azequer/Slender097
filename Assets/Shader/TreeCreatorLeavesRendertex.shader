@@ -11,15 +11,13 @@ Properties {
 }
 
 SubShader {  
-	Fog { Mode Off }
 	
 	Pass {
 CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
 #include "UnityCG.cginc"
-#include "Lighting.cginc"
-#include "Tree.cginc"
+#include "UnityBuiltin3xTreeLibrary.cginc"
 
 struct v2f {
 	float4 pos : SV_POSITION;
@@ -30,8 +28,10 @@ struct v2f {
 	float3 nh : TEXCOORD4;
 };
 
-float3 _TerrainTreeLightDirections[4];
-float4 _TerrainTreeLightColors[4];
+CBUFFER_START(UnityTerrainImposter)
+	float3 _TerrainTreeLightDirections[4];
+	float4 _TerrainTreeLightColors[4];
+CBUFFER_END
 
 v2f vert (appdata_full v) {	
 	v2f o;
@@ -71,7 +71,7 @@ sampler2D _BumpSpecMap;
 sampler2D _TranslucencyMap;
 fixed _Cutoff;
 
-fixed4 frag (v2f i) : COLOR {
+fixed4 frag (v2f i) : SV_Target {
 	fixed4 col = tex2D (_MainTex, i.uv);
 	clip (col.a - _Cutoff);
 	
@@ -98,66 +98,11 @@ fixed4 frag (v2f i) : COLOR {
 	}
 	
 	fixed4 c;
-	c.rgb = light * 2.0;
+	c.rgb = light;
 	c.a = 1;
 	return c;
 }
 ENDCG
-	}
-}
-
-SubShader {
-	Pass {		
-		Fog { Mode Off }
-		
-		CGPROGRAM
-		#pragma vertex vert
-		#pragma exclude_renderers shaderonly
-		#include "UnityCG.cginc"
-
-		struct v2f {
-			float4 pos : SV_POSITION;
-			fixed4 color : COLOR;
-			float2 uv : TEXCOORD0;
-		};
-
-		float3 _TerrainTreeLightDirections[4];
-		float4 _TerrainTreeLightColors[4];
-		float _HalfOverCutoff;
-
-		v2f vert (appdata_full v) {
-			v2f o;
-			o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
-			o.uv = v.texcoord.xy;
-
-			float3 light = UNITY_LIGHTMODEL_AMBIENT.rgb;
-			
-			for (int j = 0; j < 3; j++)
-			{
-				half3 lightColor = _TerrainTreeLightColors[j].rgb;
-				float3 lightDir = _TerrainTreeLightDirections[j];
-			
-				half nl = dot (v.normal, lightDir);
-				light += lightColor * nl;
-			}
-			
-			// lighting * AO
-			o.color.rgb = light * v.color.a;
-			
-			// We want to do alpha testing on cutoff, but at the same
-			// time write 1.0 into alpha. So we multiply alpha by 0.25/cutoff
-			// and alpha test on alpha being greater or equal to 1.0.
-			// That will work for cutoff values in range [0.25;1].
-			// Remember that color gets clamped to [0;1].
-			o.color.a = 0.5 * _HalfOverCutoff;
-			return o;
-		}
-		ENDCG
-		
-		AlphaTest GEqual 1
-		SetTexture [_MainTex] {
-			Combine texture * primary DOUBLE, texture * primary QUAD
-		} 
 	}
 }
 

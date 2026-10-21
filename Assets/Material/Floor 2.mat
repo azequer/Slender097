@@ -29,15 +29,15 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.5
+        second: .5
       data:
         first:
           name: _Shininess
-        second: 0.7
+        second: .699999988
       data:
         first:
           name: _Parallax
-        second: 0.02
+        second: .0199999996
     m_Colors:
       data:
         first:

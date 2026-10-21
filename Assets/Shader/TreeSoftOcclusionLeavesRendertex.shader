@@ -9,14 +9,14 @@ Shader "Hidden/Nature/Tree Soft Occlusion Leaves Rendertex" {
 		_Occlusion ("Dir Occlusion", Range(0, 20)) = 7.5
 		
 		// These are here only to provide default values
-		_Scale ("Scale", Vector) = (1,1,1,1)
-		_SquashAmount ("Squash", Float) = 1
+		[HideInInspector] _TreeInstanceColor ("TreeInstanceColor", Vector) = (1,1,1,1)
+		[HideInInspector] _TreeInstanceScale ("TreeInstanceScale", Vector) = (1,1,1,1)
+		[HideInInspector] _SquashAmount ("Squash", Float) = 1
 	}
 	SubShader {
 
 		Tags { "Queue" = "Transparent-99" }
 		Cull Off
-		Fog { Mode Off}
 		
 		Pass {
 			Lighting On
@@ -25,49 +25,21 @@ Shader "Hidden/Nature/Tree Soft Occlusion Leaves Rendertex" {
 			CGPROGRAM
 			#pragma vertex leaves
 			#pragma fragment frag
-			#pragma glsl_no_auto_normalization
 			#define USE_CUSTOM_LIGHT_DIR 1
-			#include "SH_Vertex.cginc"
+			#include "UnityBuiltin2xTreeLibrary.cginc"
 			
 			sampler2D _MainTex;
 			fixed _Cutoff;
 			
-			fixed4 frag(v2f input) : COLOR
+			fixed4 frag(v2f input) : SV_Target
 			{
 				fixed4 col = tex2D( _MainTex, input.uv.xy);
-				col.rgb *= 2.0f * input.color.rgb;
+				col.rgb *= input.color.rgb;
 				clip(col.a - _Cutoff);
 				col.a = 1;
 				return col;
 			}
 			ENDCG
-		}
-	}
-	SubShader {
-		Tags { "Queue" = "Transparent-99" }
-		Cull Off
-		Fog { Mode Off}
-		
-		Pass {
-			CGPROGRAM
-			#pragma exclude_renderers shaderonly
-			#pragma vertex leaves
-			#define USE_CUSTOM_LIGHT_DIR 1
-			#include "SH_Vertex.cginc"
-			ENDCG
-			
-			Lighting On
-			ZWrite On
-			
-			// We want to do alpha testing on cutoff, but at the same
-			// time write 1.0 into alpha. So we multiply alpha by 0.25/cutoff
-			// and alpha test on alpha being greater or equal to 1.0.
-			// That will work for cutoff values in range [0.25;1].
-			// Remember that color gets clamped to [0;1].
-			AlphaTest GEqual 1.0
-			SetTexture [_MainTex] {
-				combine primary * texture double, primary * texture QUAD
-			}
 		}
 	}
 	

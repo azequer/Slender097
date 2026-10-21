@@ -2,11 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!43 &4300000
 Mesh:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: APost
+  serializedVersion: 6
   m_SubMeshes:
   - firstByte: 0
     indexCount: 36
@@ -15,83 +15,83 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: -149.95, y: 2.7129736, z: 90}
-      m_Extent: {x: 0.05000305, y: 1.7499999, z: 0.05000305}
+      m_Center: {x: -149.949997, y: 2.71297359, z: 90}
+      m_Extent: {x: .0500030518, y: 1.74999988, z: .0500030518}
   m_MeshCompression: 1
-  m_IndexBuffer:
+  m_IndexBuffer: 
   m_Skin: []
   m_BindPose: []
   m_VertexData:
     m_CurrentChannels: 0
     m_VertexCount: 0
     m_Streams[0]:
-      channelMask: 0
+      channelMask: 63
       offset: 0
-      stride: 0
-      align: 0
+      stride: 60
+      align: 16
     m_Streams[1]:
       channelMask: 0
       offset: 0
       stride: 0
-      align: 0
+      align: 16
     m_Streams[2]:
       channelMask: 0
       offset: 0
       stride: 0
-      align: 0
+      align: 16
     m_Streams[3]:
       channelMask: 0
       offset: 0
       stride: 0
-      align: 0
+      align: 16
     m_DataSize: 0
-    _typelessdata:
+    _typelessdata: 
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 72
-      m_Range: 1.0001221
-      m_Start: -0.5001221
-      m_Data: 000800000800fffbffffffff000800fffbff000800fffffffffbfffffffffffffffffbff000800fffffffffbfffffffffffffffffbff000800ffffff000000ffffffffffff000000000800ffffff000000ffffffffffff000000000800000800000000ffffff000800000000000800000800000000ffffff000800000000000800000800fffbffffffff000800fffbff000800000800000000000800000800fffbff000800ffffff000000000800fffffffffbffffffff000800fffbffffffff000800000000fffffffffffffffbffffffffffffff000000
-      m_BitSize: 24
+      m_Range: 1.00012207
+      m_Start: -.50012207
+      m_Data: 8000000800bfffffffff8000f0fbff8000f0ffffbffffffffffffffffbff8000f0ffffbffffffffffffffffbff8000f0ffff0000f0ffffffff0f00008000f0ffff0000f0ffffffff0f000080000008000000f0ffff800000000080000008000000f0ffff80000000008000000800bfffffffff8000f0fbff800000080000000008008000f0fbff8000f0ffff0000000800fffffffbffffff0f0800bfffffffff8000000000ffffffffffbfffffffffffff0f0000
+      m_BitSize: 20
     m_UV:
       m_NumItems: 96
       m_Range: 1
       m_Start: 0
-      m_Data: ffffff000000000000000000ffffffffffff000000ffffffffffff000000000000000000ffffffffffff000000ffffffffffff000000000000000000ffffffffffff000000ffffffffffff000000000000000000ffffffffffff000000ffffffffffff000000000000000000ffffffffffff000000ffffffffffff000000000000000000ffffffffffff000000fffffffb24ffc4df587de4b0c4df58fb24ff3f20a77de4b03f20a7cc09013f20a74a4a4f3f20a7cc0901c1df584a4a4fc1df583f20a7c1df58c1df58c1df583f20a73f20a7c1df583f20a73f20a7cc0901c1df58cc09013f20a74a4a4fc1df584a4a4fb7b5b0cc0901b7b5b04a4a4f33f6fecc090133f6fe4a4a4f4a4a4f4a4a4f4a4a4fcc0901cc09014a4a4fcc0901cc0901
-      m_BitSize: 24
+      m_Data: ffff000000000000ffffffff0000ffffffff000000000000ffffffff0000ffffffff000000000000ffffffff0000ffffffff000000000000ffffffff0000ffffffff000000000000ffffffff0000ffffffff000000000000ffffffff0000ffff23ffdf58e3b0df5823ff1fa7e3b01fa709011fa7494f1fa70901df58494fdf581fa7df58df58df581fa71fa7df581fa71fa70901df5809011fa7494fdf58494fb5b00901b5b0494ff5fe0901f5fe494f494f494f494f09010901494f09010901
+      m_BitSize: 16
     m_BindPoses:
       m_NumItems: 0
-      m_Range: -Infinity
-      m_Start: Infinity
-      m_Data:
-      m_BitSize: 24
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
     m_Normals:
       m_NumItems: 48
       m_Range: 2
       m_Start: -1
-      m_Data: 000080000080000080000080000080000080000080000080000080ffffff000080ffffff000080ffffff000080ffffff000080000080000080000080000080000080000080000080000080000000000080000000000080000000000080000000000000000080000000000080000000000080000000000080ffffff000080ffffff000080ffffff000080ffffff000080
-      m_BitSize: 24
+      m_Data: 7f7f7f7f7f7f7f7f7fff7fff7fff7fff7f7f7f7f7f7f7f7f7f007f007f007f00007f007f007f007fff7fff7fff7fff7f
+      m_BitSize: 8
     m_Tangents:
       m_NumItems: 48
       m_Range: 1
       m_Start: -1
-      m_Data: 000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-      m_BitSize: 24
+      m_Data: 00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ffffffffffffffffffffffffffffffffff
+      m_BitSize: 8
     m_Weights:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 24
-      m_Data: fff0ff
+      m_Data: 0f0000
       m_BitSize: 1
     m_TangentSigns:
       m_NumItems: 48
-      m_Data: 555555550055
+      m_Data: 000000000055
       m_BitSize: 1
     m_BoneIndices:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 36
@@ -102,7 +102,7 @@ Mesh:
       m_Data: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
       m_BitSize: 32
   m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: -9.1552734E-05}
-    m_Extent: {x: 0.5, y: 0.5, z: 0.5000305}
+    m_Center: {x: 0, y: 0, z: -9.15527344e-05}
+    m_Extent: {x: .5, y: .5, z: .500030518}
   m_MeshUsageFlags: 0
   m_MeshOptimized: 1

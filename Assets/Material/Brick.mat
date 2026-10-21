@@ -29,23 +29,23 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.078125
+        second: .078125
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
       data:
         first:
           name: _EmissionLM
         second: 0
       data:
         first:
-          name: _Parallax
-        second: 0.02
-      data:
-        first:
           name: _WaveScale
-        second: 0.07
+        second: .0700000003
       data:
         first:
           name: _Outline
-        second: 0.005
+        second: .00499999989
     m_Colors:
       data:
         first:
@@ -54,7 +54,7 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
           name: _Emission
@@ -62,7 +62,7 @@ Material:
       data:
         first:
           name: _horizonColor
-        second: {r: 0.172, g: 0.463, b: 0.435, a: 0}
+        second: {r: .172000006, g: .463, b: .435000002, a: 0}
       data:
         first:
           name: WaveSpeed
@@ -70,7 +70,7 @@ Material:
       data:
         first:
           name: _ReflectColor
-        second: {r: 1, g: 1, b: 1, a: 0.5}
+        second: {r: 1, g: 1, b: 1, a: .5}
       data:
         first:
           name: _OutlineColor

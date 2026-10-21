@@ -65,9 +65,9 @@ public class MouseLook : MonoBehaviour
 
 	private void Start()
 	{
-		if ((bool)base.rigidbody)
+		if ((bool)base.GetComponent<Rigidbody>())
 		{
-			base.rigidbody.freezeRotation = true;
+			base.GetComponent<Rigidbody>().freezeRotation = true;
 		}
 	}
 }

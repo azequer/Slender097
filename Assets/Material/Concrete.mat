@@ -29,17 +29,17 @@ Material:
       data:
         first:
           name: _Shininess
-        second: 0.078125
+        second: .078125
       data:
         first:
           name: _Parallax
-        second: 0.08
+        second: .0799999982
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0.41791046, g: 0.3593742, b: 0.22766763, a: 1}
+        second: {r: .417910457, g: .359374195, b: .22766763, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: .5, g: .5, b: .5, a: 1}
