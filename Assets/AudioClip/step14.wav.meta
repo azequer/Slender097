@@ -3,15 +3,27 @@ guid: f02d55c0f22c35b4ba73b092b2e13a34
 timeCreated: 1773360090
 licenseType: Free
 AudioImporter:
-  serializedVersion: 4
-  name:
-  format: 3
-  quality: 0
-  stream: 1
-  previewDataLength: 0
-  audio preview data: 0
-  _typelessdata:
-  3D: 0
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 1
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides:
+    5:
+      loadType: 1
+      sampleRateSetting: 0
+      sampleRateOverride: 0
+      compressionFormat: 3
+      quality: .310000002
+      conversionMode: 0
   forceToMono: 0
-  useHardware: 0
-  loopable: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
