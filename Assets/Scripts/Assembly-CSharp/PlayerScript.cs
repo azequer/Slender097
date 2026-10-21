@@ -887,6 +887,7 @@ public class PlayerScript : MonoBehaviour
 				{
 					torch.enabled = false;
 				}
+				base.GetComponent<Camera>().farClipPlane = 80f;
 			}
 		}
 		if (!lost)
