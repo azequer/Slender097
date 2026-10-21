@@ -73,13 +73,13 @@ MonoBehaviour:
   m_button:
     m_Name: button
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 67a60e1f040c72049a469c1555abac47, type: 1}
+      m_Background: {fileID: 2800000, guid: 988a711a604cc2a4b94b8cfe64f97962, type: 1}
       m_TextColor: {r: 0.60447764, g: 0.60447764, b: 0.60447764, a: 1}
     m_Hover:
-      m_Background: {fileID: 2800000, guid: 1103c4a91e0ec614094212f2bec49922, type: 1}
+      m_Background: {fileID: 2800000, guid: 86c900bfaabf9454589a3947368100bc, type: 1}
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Active:
-      m_Background: {fileID: 2800000, guid: 618f2c916291f2042af72db35d5d4681, type: 1}
+      m_Background: {fileID: 2800000, guid: 632a96fa956bc1041b1c628f822ab911, type: 1}
       m_TextColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
     m_Focused:
       m_Background: {fileID: 0}
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_horizontalSlider:
     m_Name: horizontalslider
     m_Normal:
-      m_Background: {fileID: 2800000, guid: b7917199eea9c8445940ab0cb24cde6c, type: 1}
+      m_Background: {fileID: 2800000, guid: 85cbbf928d3d969419a318a46e6d930c, type: 1}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}

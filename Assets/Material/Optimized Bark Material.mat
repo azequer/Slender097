@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Optimized Bark Material
-  m_Shader: {fileID: 4800000, guid: c8781fab646994242b476b2eb4a435c7, type: 1}
+  m_Shader: {fileID: 4800000, guid: e5eb1d2def93ee44ea5df60ede9715fa, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,21 +15,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: c55a9edc1a3cc094fac71e9245e28c66, type: 1}
+          m_Texture: {fileID: 2800000, guid: 8fcc38d54b9dc5c45ac4eeef1c9e03b8, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TranslucencyMap
         second:
-          m_Texture: {fileID: 2800000, guid: 44a9612c5bf43cc40ac38a0d67d75603, type: 1}
+          m_Texture: {fileID: 2800000, guid: cf08f695ddf6f4748a4605402f2df541, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpSpecMap
         second:
-          m_Texture: {fileID: 2800000, guid: 1a612c43e18d8ae4db507a0316633be5, type: 1}
+          m_Texture: {fileID: 2800000, guid: c2d7755581a8e8a4e871b911b8912945, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

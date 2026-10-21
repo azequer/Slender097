@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Slenderman
-  m_Shader: {fileID: 4800000, guid: acd356bd880df3b46b478bdbbddb6fa2, type: 1}
+  m_Shader: {fileID: 4800000, guid: 071dc047a3ce3a947b7dc48936d08211, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,21 +15,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 8aa3c80c00103174787030fac244b635, type: 1}
+          m_Texture: {fileID: 2800000, guid: 309c750dcb84c5e4b80dbcdca1ae45d4, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _RimTex
         second:
-          m_Texture: {fileID: 2800000, guid: 948cf3a87dfda384c8d2edf06579ecc6, type: 1}
+          m_Texture: {fileID: 2800000, guid: 2a5b041cdff14234998e400765dc5a87, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _WrapTex
         second:
-          m_Texture: {fileID: 2800000, guid: d44034c9898d16340b14d34251d1d946, type: 1}
+          m_Texture: {fileID: 2800000, guid: bb682d5af9587e346b08c70467eeb8a2, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Optimized Leaf Material
-  m_Shader: {fileID: 4800000, guid: 36ca83a2689006740b20667684b1b729, type: 1}
+  m_Shader: {fileID: 4800000, guid: 9c508ae3a84fe0348b64fdf3704c3f40, type: 1}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -15,28 +15,28 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 64fe8816e69dd1e408e7385f9ea086d1, type: 1}
+          m_Texture: {fileID: 2800000, guid: 8e5c3dc8fcaf9484490679186429f30c, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _TranslucencyMap
         second:
-          m_Texture: {fileID: 2800000, guid: b9e09bab37fb3aa448356f990d34812d, type: 1}
+          m_Texture: {fileID: 2800000, guid: 0bcfe91e72566f046bc018c2f539c5fc, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpSpecMap
         second:
-          m_Texture: {fileID: 2800000, guid: 3eb48ff0614991b4cbe1f138e43deb57, type: 1}
+          m_Texture: {fileID: 2800000, guid: 9e88790e3fbe20b46acf59a2d9f61c23, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ShadowTex
         second:
-          m_Texture: {fileID: 2800000, guid: dacd2f9bcc79c2c47bad8672a81fb408, type: 1}
+          m_Texture: {fileID: 2800000, guid: 254152cdfedade5419c16c2e08016739, type: 1}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
