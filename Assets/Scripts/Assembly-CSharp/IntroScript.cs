@@ -74,6 +74,24 @@ public class IntroScript : MonoBehaviour
 
 	public bool infomenu;
 
+	private int menuControlIndex;
+
+	private int selectedMenuControl;
+
+	private int menuControlCount;
+
+	private bool[] menuSliderControls = new bool[32];
+
+	private bool menuConfirm;
+
+	private float menuSliderDelta;
+
+	private float menuInputDelay;
+
+	private GUIStyle selectedButtonStyle;
+
+	private GUIStyle selectedToggleStyle;
+
 	private void Start()
 	{
 		sk1.enableEmission = true;
@@ -273,11 +291,12 @@ public class IntroScript : MonoBehaviour
 			return;
 		}
 		GUI.skin = menu;
+		menuControlIndex = 0;
 		GUI.BeginGroup(new Rect(Screen.width / 2 - 300, Screen.height / 2 - 100, 600f, 300f));
 		GUI.Box(new Rect(150f, 35f, 300f, 300f), string.Empty);
 		if (!optmenu && !extmenu && !mythosmenu)
 		{
-			if (GUI.Button(new Rect(210f, 50f, 180f, 40f), "Start game"))
+			if (MenuButton(new Rect(210f, 50f, 180f, 40f), "Start game"))
 			{
 				view.flashlight.Play();
 				gamestarted = true;
@@ -326,22 +345,22 @@ public class IntroScript : MonoBehaviour
 					break;
 				}
 			}
-			if (GUI.Button(new Rect(210f, 100f, 180f, 40f), "Slender Man Mythos"))
+			if (MenuButton(new Rect(210f, 100f, 180f, 40f), "Slender Man Mythos"))
 			{
 				view.flashlight.Play();
 				mythosmenu = true;
 			}
-			if (GUI.Button(new Rect(210f, 150f, 85f, 40f), "Options"))
+			if (MenuButton(new Rect(210f, 150f, 85f, 40f), "Options"))
 			{
 				view.flashlight.Play();
 				optmenu = true;
 			}
-			if (GUI.Button(new Rect(305f, 150f, 85f, 40f), "Extras"))
+			if (MenuButton(new Rect(305f, 150f, 85f, 40f), "Extras"))
 			{
 				view.flashlight.Play();
 				extmenu = true;
 			}
-			if (GUI.Button(new Rect(210f, 200f, 180f, 40f), "Credits"))
+			if (MenuButton(new Rect(210f, 200f, 180f, 40f), "Credits"))
 			{
 				thememusic.Stop();
 				view.flashlight.Play();
@@ -353,7 +372,7 @@ public class IntroScript : MonoBehaviour
 				gamestarted = true;
 				timer = 1600;
 			}
-			if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Quit") || view.backedup)
+			if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Quit") || view.backedup)
 			{
 				view.flashlight.Play();
 				Application.Quit();
@@ -364,17 +383,17 @@ public class IntroScript : MonoBehaviour
 		{
 			if (!youtubemenu && !infomenu)
 			{
-				if (GUI.Button(new Rect(180f, 100f, 240f, 40f), "Slender Man YouTube Series"))
+				if (MenuButton(new Rect(180f, 100f, 240f, 40f), "Slender Man YouTube Series"))
 				{
 					view.flashlight.Play();
 					youtubemenu = true;
 				}
-				if (GUI.Button(new Rect(180f, 150f, 240f, 40f), "Other vlogs, blogs, and info"))
+				if (MenuButton(new Rect(180f, 150f, 240f, 40f), "Other vlogs, blogs, and info"))
 				{
 					view.flashlight.Play();
 					infomenu = true;
 				}
-				if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
+				if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
 				{
 					view.flashlight.Play();
 					mythosmenu = false;
@@ -383,37 +402,37 @@ public class IntroScript : MonoBehaviour
 			}
 			else if (youtubemenu)
 			{
-				if (GUI.Button(new Rect(160f, 75f, 135f, 40f), "Marble Hornets"))
+				if (MenuButton(new Rect(160f, 75f, 135f, 40f), "Marble Hornets"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/MarbleHornets");
 				}
-				if (GUI.Button(new Rect(305f, 75f, 135f, 40f), "everymanHYBRID"))
+				if (MenuButton(new Rect(305f, 75f, 135f, 40f), "everymanHYBRID"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/EverymanHybrid");
 				}
-				if (GUI.Button(new Rect(160f, 125f, 135f, 40f), "TribeTwelve"))
+				if (MenuButton(new Rect(160f, 125f, 135f, 40f), "TribeTwelve"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/TribeTwelve ");
 				}
-				if (GUI.Button(new Rect(305f, 125f, 135f, 40f), "Dark Harvest"))
+				if (MenuButton(new Rect(305f, 125f, 135f, 40f), "Dark Harvest"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/DarkHarvest00");
 				}
-				if (GUI.Button(new Rect(160f, 175f, 135f, 40f), "Anderson Journals"))
+				if (MenuButton(new Rect(160f, 175f, 135f, 40f), "Anderson Journals"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/MLAndersen0");
 				}
-				if (GUI.Button(new Rect(305f, 175f, 135f, 40f), "Caught Not Sleeping"))
+				if (MenuButton(new Rect(305f, 175f, 135f, 40f), "Caught Not Sleeping"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.youtube.com/user/CaughtNotSleeping");
 				}
-				if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
+				if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
 				{
 					view.flashlight.Play();
 					youtubemenu = false;
@@ -422,17 +441,17 @@ public class IntroScript : MonoBehaviour
 			}
 			else if (infomenu)
 			{
-				if (GUI.Button(new Rect(180f, 100f, 240f, 40f), "www.slendermanmythos.com"))
+				if (MenuButton(new Rect(180f, 100f, 240f, 40f), "www.slendermanmythos.com"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://www.slendermanmythos.com/lexicon/");
 				}
-				if (GUI.Button(new Rect(180f, 150f, 240f, 40f), "unfiction forums"))
+				if (MenuButton(new Rect(180f, 150f, 240f, 40f), "unfiction forums"))
 				{
 					view.flashlight.Play();
 					Application.OpenURL("http://forums.unfiction.com/forums/index.php?f=264");
 				}
-				if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
+				if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
 				{
 					view.flashlight.Play();
 					infomenu = false;
@@ -444,11 +463,11 @@ public class IntroScript : MonoBehaviour
 		{
 			if (modeoff)
 			{
-				GUI.Toggle(new Rect(210f, 50f, 180f, 20f), true, "Normal Mode");
+				MenuToggle(new Rect(210f, 50f, 180f, 20f), true, "Normal Mode");
 			}
 			else
 			{
-				modeoff = GUI.Toggle(new Rect(210f, 50f, 180f, 20f), false, "Normal Mode");
+				modeoff = MenuToggle(new Rect(210f, 50f, 180f, 20f), false, "Normal Mode");
 				if (modeoff)
 				{
 					view.flashlight.Play();
@@ -461,11 +480,11 @@ public class IntroScript : MonoBehaviour
 			{
 				if (view.mh)
 				{
-					GUI.Toggle(new Rect(210f, 75f, 180f, 20f), true, "Marble Hornets Mode");
+					MenuToggle(new Rect(210f, 75f, 180f, 20f), true, "Marble Hornets Mode");
 				}
 				else
 				{
-					view.mh = GUI.Toggle(new Rect(210f, 75f, 180f, 20f), false, "Marble Hornets Mode");
+					view.mh = MenuToggle(new Rect(210f, 75f, 180f, 20f), false, "Marble Hornets Mode");
 					if (view.mh)
 					{
 						view.flashlight.Play();
@@ -476,11 +495,11 @@ public class IntroScript : MonoBehaviour
 				}
 				if (view.daytime)
 				{
-					GUI.Toggle(new Rect(210f, 100f, 180f, 20f), true, "Daytime Mode");
+					MenuToggle(new Rect(210f, 100f, 180f, 20f), true, "Daytime Mode");
 				}
 				else
 				{
-					view.daytime = GUI.Toggle(new Rect(210f, 100f, 180f, 20f), false, "Daytime Mode");
+					view.daytime = MenuToggle(new Rect(210f, 100f, 180f, 20f), false, "Daytime Mode");
 					if (view.daytime)
 					{
 						view.flashlight.Play();
@@ -492,17 +511,17 @@ public class IntroScript : MonoBehaviour
 			}
 			else
 			{
-				GUI.Toggle(new Rect(210f, 75f, 180f, 20f), false, "???");
-				GUI.Toggle(new Rect(210f, 100f, 180f, 20f), false, "???");
+				MenuToggle(new Rect(210f, 75f, 180f, 20f), false, "???");
+				MenuToggle(new Rect(210f, 100f, 180f, 20f), false, "???");
 			}
 			if (!sunup || fltype == 0)
 			{
-				GUI.Toggle(new Rect(210f, 150f, 180f, 20f), true, "Flashlight");
+				MenuToggle(new Rect(210f, 150f, 180f, 20f), true, "Flashlight");
 			}
 			else
 			{
 				bool flag = false;
-				if (GUI.Toggle(new Rect(210f, 150f, 180f, 20f), false, "Flashlight"))
+				if (MenuToggle(new Rect(210f, 150f, 180f, 20f), false, "Flashlight"))
 				{
 					view.flashlight.Play();
 					fltype = 0;
@@ -513,12 +532,12 @@ public class IntroScript : MonoBehaviour
 			{
 				if (fltype == 1)
 				{
-					GUI.Toggle(new Rect(210f, 175f, 180f, 20f), true, "Glowstick");
+					MenuToggle(new Rect(210f, 175f, 180f, 20f), true, "Glowstick");
 				}
 				else
 				{
 					bool flag = false;
-					if (GUI.Toggle(new Rect(210f, 175f, 180f, 20f), false, "Glowstick"))
+					if (MenuToggle(new Rect(210f, 175f, 180f, 20f), false, "Glowstick"))
 					{
 						view.flashlight.Play();
 						fltype = 1;
@@ -527,12 +546,12 @@ public class IntroScript : MonoBehaviour
 				}
 				if (fltype == 2)
 				{
-					GUI.Toggle(new Rect(210f, 200f, 180f, 20f), true, "Crank Lantern");
+					MenuToggle(new Rect(210f, 200f, 180f, 20f), true, "Crank Lantern");
 				}
 				else
 				{
 					bool flag = false;
-					if (GUI.Toggle(new Rect(210f, 200f, 180f, 20f), false, "Crank Lantern"))
+					if (MenuToggle(new Rect(210f, 200f, 180f, 20f), false, "Crank Lantern"))
 					{
 						view.flashlight.Play();
 						fltype = 2;
@@ -542,10 +561,10 @@ public class IntroScript : MonoBehaviour
 			}
 			else
 			{
-				GUI.Toggle(new Rect(210f, 175f, 180f, 20f), false, "???");
-				GUI.Toggle(new Rect(210f, 200f, 180f, 20f), false, "???");
+				MenuToggle(new Rect(210f, 175f, 180f, 20f), false, "???");
+				MenuToggle(new Rect(210f, 200f, 180f, 20f), false, "???");
 			}
-			if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
+			if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
 			{
 				view.flashlight.Play();
 				extmenu = false;
@@ -555,7 +574,7 @@ public class IntroScript : MonoBehaviour
 		else if (optmenu)
 		{
 			bool inverted = mly.inverted;
-			mly.inverted = GUI.Toggle(new Rect(210f, 50f, 180f, 20f), mly.inverted, "Invert Mouse");
+			mly.inverted = MenuToggle(new Rect(210f, 50f, 180f, 20f), mly.inverted, "Invert Mouse");
 			if (inverted != mly.inverted)
 			{
 				view.flashlight.Play();
@@ -570,7 +589,7 @@ public class IntroScript : MonoBehaviour
 			}
 			GUI.Label(new Rect(210f, 75f, 80f, 20f), "Sensitivity");
 			float sensitivityX = mlx.sensitivityX;
-			sensitivityX = GUI.HorizontalSlider(new Rect(290f, 80f, 115f, 15f), sensitivityX, 1f, 30f);
+			sensitivityX = MenuSlider(new Rect(290f, 80f, 115f, 15f), sensitivityX, 1f, 30f);
 			if (sensitivityX != mlx.sensitivityX)
 			{
 				mlx.sensitivityX = sensitivityX;
@@ -579,7 +598,7 @@ public class IntroScript : MonoBehaviour
 			}
 			GUI.Label(new Rect(210f, 125f, 80f, 20f), "Grass Level");
 			float detailObjectDensity = land.detailObjectDensity;
-			detailObjectDensity = GUI.HorizontalSlider(new Rect(290f, 130f, 115f, 15f), detailObjectDensity, 0f, 1f);
+			detailObjectDensity = MenuSlider(new Rect(290f, 130f, 115f, 15f), detailObjectDensity, 0f, 1f);
 			if (detailObjectDensity != land.detailObjectDensity)
 			{
 				land.detailObjectDensity = detailObjectDensity;
@@ -587,7 +606,7 @@ public class IntroScript : MonoBehaviour
 			}
 			GUI.Label(new Rect(210f, 150f, 80f, 20f), "Tree Detail");
 			float treeBillboardDistance = land.treeBillboardDistance;
-			treeBillboardDistance = GUI.HorizontalSlider(new Rect(290f, 155f, 115f, 15f), treeBillboardDistance, 20f, 80f);
+			treeBillboardDistance = MenuSlider(new Rect(290f, 155f, 115f, 15f), treeBillboardDistance, 20f, 80f);
 			if (treeBillboardDistance != land.detailObjectDensity)
 			{
 				land.treeBillboardDistance = treeBillboardDistance;
@@ -595,7 +614,7 @@ public class IntroScript : MonoBehaviour
 				PlayerPrefs.SetFloat("trees", treeBillboardDistance);
 			}
 			bool dustyair = view.dustyair;
-			view.dustyair = GUI.Toggle(new Rect(210f, 175f, 180f, 20f), view.dustyair, "Fog");
+			view.dustyair = MenuToggle(new Rect(210f, 175f, 180f, 20f), view.dustyair, "Fog");
 			if (dustyair != view.dustyair)
 			{
 				view.flashlight.Play();
@@ -609,7 +628,7 @@ public class IntroScript : MonoBehaviour
 				}
 			}
 			bool flag2 = skintro;
-			skintro = GUI.Toggle(new Rect(210f, 200f, 180f, 20f), skintro, "Skip Intro");
+			skintro = MenuToggle(new Rect(210f, 200f, 180f, 20f), skintro, "Skip Intro");
 			if (flag2 != skintro)
 			{
 				view.flashlight.Play();
@@ -622,7 +641,7 @@ public class IntroScript : MonoBehaviour
 					PlayerPrefs.SetInt("skintro", 0);
 				}
 			}
-			if (GUI.Button(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
+			if (MenuButton(new Rect(210f, 250f, 180f, 40f), "Back") || view.backedup)
 			{
 				view.flashlight.Play();
 				optmenu = false;
@@ -630,11 +649,128 @@ public class IntroScript : MonoBehaviour
 			}
 		}
 		GUI.EndGroup();
+		menuControlCount = menuControlIndex;
+		if (selectedMenuControl >= menuControlCount)
+		{
+			selectedMenuControl = Mathf.Max(0, menuControlCount - 1);
+		}
+	}
+
+	private bool MenuButton(Rect rect, string text)
+	{
+		int control = RegisterMenuControl(false);
+		bool selected = control == selectedMenuControl;
+		bool clicked = GUI.Button(rect, text, selected ? GetSelectedButtonStyle() : GUI.skin.button);
+		if (selected && menuConfirm && Event.current.type == EventType.Repaint)
+		{
+			menuConfirm = false;
+			return true;
+		}
+		return clicked;
+	}
+
+	private bool MenuToggle(Rect rect, bool value, string text)
+	{
+		int control = RegisterMenuControl(false);
+		bool selected = control == selectedMenuControl;
+		bool changedValue = GUI.Toggle(rect, value, text, selected ? GetSelectedToggleStyle() : GUI.skin.toggle);
+		if (selected && menuConfirm && Event.current.type == EventType.Repaint)
+		{
+			menuConfirm = false;
+			return !value;
+		}
+		return changedValue;
+	}
+
+	private float MenuSlider(Rect rect, float value, float leftValue, float rightValue)
+	{
+		int control = RegisterMenuControl(true);
+		bool selected = control == selectedMenuControl;
+		Color previousColor = GUI.color;
+		if (selected)
+		{
+			GUI.color = Color.yellow;
+		}
+		float changedValue = GUI.HorizontalSlider(rect, value, leftValue, rightValue);
+		GUI.color = previousColor;
+		if (selected && menuSliderDelta != 0f && Event.current.type == EventType.Repaint)
+		{
+			changedValue = Mathf.Clamp(value + menuSliderDelta * (rightValue - leftValue), leftValue, rightValue);
+			menuSliderDelta = 0f;
+		}
+		return changedValue;
+	}
+
+	private int RegisterMenuControl(bool isSlider)
+	{
+		int control = menuControlIndex++;
+		if (control < menuSliderControls.Length)
+		{
+			menuSliderControls[control] = isSlider;
+		}
+		return control;
+	}
+
+	private GUIStyle GetSelectedButtonStyle()
+	{
+		if (selectedButtonStyle == null)
+		{
+			selectedButtonStyle = new GUIStyle(GUI.skin.button);
+			selectedButtonStyle.normal.textColor = Color.yellow;
+			selectedButtonStyle.hover.textColor = Color.yellow;
+		}
+		return selectedButtonStyle;
+	}
+
+	private GUIStyle GetSelectedToggleStyle()
+	{
+		if (selectedToggleStyle == null)
+		{
+			selectedToggleStyle = new GUIStyle(GUI.skin.toggle);
+			selectedToggleStyle.normal.textColor = Color.yellow;
+			selectedToggleStyle.hover.textColor = Color.yellow;
+		}
+		return selectedToggleStyle;
 	}
 
 	private void Update()
 	{
-		if (!gamestarted && Input.GetKeyDown(KeyCode.Escape))
+		if (gamestarted)
+		{
+			return;
+		}
+
+		menuInputDelay -= Time.deltaTime;
+		float vertical = Input.GetAxisRaw("Menu Vertical");
+		bool moveUp = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || (vertical > 0.5f && menuInputDelay <= 0f);
+		bool moveDown = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || (vertical < -0.5f && menuInputDelay <= 0f);
+		if (menuControlCount > 0 && (moveUp || moveDown))
+		{
+			int menuMove = moveUp ? -1 : 1;
+			selectedMenuControl = (selectedMenuControl + menuMove + menuControlCount) % menuControlCount;
+			menuInputDelay = 0.2f;
+		}
+
+		menuConfirm = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
+		menuSliderDelta = 0f;
+		float horizontal = Input.GetAxisRaw("Menu Horizontal");
+		if (selectedMenuControl < menuSliderControls.Length && menuSliderControls[selectedMenuControl])
+		{
+			if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+			{
+				menuSliderDelta = -0.02f;
+			}
+			else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+			{
+				menuSliderDelta = 0.02f;
+			}
+			else if (Mathf.Abs(horizontal) > 0.2f)
+			{
+				menuSliderDelta = horizontal * Time.deltaTime * 0.75f;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton1))
 		{
 			if (optmenu)
 			{
@@ -643,6 +779,18 @@ public class IntroScript : MonoBehaviour
 			else if (extmenu)
 			{
 				extmenu = false;
+			}
+			else if (mythosmenu && youtubemenu)
+			{
+				youtubemenu = false;
+			}
+			else if (mythosmenu && infomenu)
+			{
+				infomenu = false;
+			}
+			else if (mythosmenu)
+			{
+				mythosmenu = false;
 			}
 			else
 			{

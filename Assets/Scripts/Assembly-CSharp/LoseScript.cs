@@ -222,8 +222,6 @@ public class LoseScript : MonoBehaviour
 				{
 					PlayerPrefs.SetInt("daytime", 1);
 				}
-
-				original.farClipPlane = 1000f;
 			}
 			if (view.dustyair && view.daytime)
 			{

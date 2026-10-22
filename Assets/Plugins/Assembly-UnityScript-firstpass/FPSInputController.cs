@@ -15,7 +15,19 @@ public class FPSInputController : MonoBehaviour
 
 	public virtual void Update()
 	{
-		Vector3 vector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+		float horizontal = Input.GetAxis("Horizontal");
+		float vertical = Input.GetAxis("Vertical");
+		float gamepadHorizontal = Input.GetAxis("Gamepad Horizontal");
+		float gamepadVertical = Input.GetAxis("Gamepad Vertical");
+		if (Mathf.Abs(gamepadHorizontal) > Mathf.Abs(horizontal))
+		{
+			horizontal = gamepadHorizontal;
+		}
+		if (Mathf.Abs(gamepadVertical) > Mathf.Abs(vertical))
+		{
+			vertical = gamepadVertical;
+		}
+		Vector3 vector = new Vector3(horizontal, 0f, vertical);
 		if (vector != Vector3.zero)
 		{
 			float magnitude = vector.magnitude;

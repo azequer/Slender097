@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 2
+  m_CurrentQuality: 3
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -103,9 +103,7 @@ QualitySettings:
     lodBias: 1
     maximumLODLevel: 0
     particleRaycastBudget: 256
-    excludedTargetPlatforms:
-    - PS3
-    - XBOX360
+    excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Beautiful
     pixelLightCount: 3
@@ -153,13 +151,15 @@ QualitySettings:
     lodBias: 2
     maximumLODLevel: 0
     particleRaycastBudget: 4096
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - PS3
+    - XBOX360
   m_PerPlatformDefaultQuality:
     Android: 2
     BlackBerry: 2
     Nintendo 3DS: 5
     Nintendo Switch: 5
-    PS3: 5
+    PS3: 3
     PS4: 5
     PSM: 5
     PSP2: 2
@@ -171,7 +171,7 @@ QualitySettings:
     WebGL: 0
     WiiU: 5
     Windows Store Apps: 2
-    XBOX360: 5
+    XBOX360: 3
     XboxOne: 5
     iPhone: 2
     tvOS: 2

@@ -186,7 +186,7 @@ public class PlayerScript : MonoBehaviour
 		if (paused)
 		{
 			GUI.Label(new Rect(Screen.width / 2 - 300, Screen.height / 2 - 75, 600f, 50f), "PAUSED", hint);
-			GUI.Label(new Rect(Screen.width / 2 - 300, Screen.height / 2 - 25, 600f, 50f), "ESC to resume", hint);
+			GUI.Label(new Rect(Screen.width / 2 - 300, Screen.height / 2 - 25, 600f, 50f), "ESC / START to resume", hint);
 			GUI.Label(new Rect(Screen.width / 2 - 300, Screen.height / 2 + 25, 600f, 50f), "SPACE to quit", hint);
 		}
 		else if (fadeoutgui < 400 && !mh)
@@ -235,7 +235,7 @@ public class PlayerScript : MonoBehaviour
 				startgame.timer = 1598;
 				climbfence.Stop();
 			}
-			if (Input.GetKeyDown("escape"))
+			if (Input.GetKeyDown("escape") || Input.GetKeyDown(KeyCode.JoystickButton7))
 			{
 				if (startgame.gamestarted)
 				{
@@ -295,7 +295,7 @@ public class PlayerScript : MonoBehaviour
 				Screen.lockCursor = true;
 			}
 		}
-		else if (Input.GetKeyDown("escape"))
+		else if (Input.GetKeyDown("escape") || Input.GetKeyDown(KeyCode.JoystickButton7))
 		{
 			paused = false;
 			Time.timeScale = 1f;
@@ -316,6 +316,13 @@ public class PlayerScript : MonoBehaviour
 			endflicker = false;
 			lastflicker = true;
 		}
+	}
+
+	private float GetMovementAxis(string keyboardAxis, string gamepadAxis)
+	{
+		float keyboardValue = Input.GetAxis(keyboardAxis);
+		float gamepadValue = Input.GetAxis(gamepadAxis);
+		return Mathf.Abs(gamepadValue) > Mathf.Abs(keyboardValue) ? gamepadValue : keyboardValue;
 	}
 
 	private void FixedUpdate()
@@ -580,7 +587,7 @@ public class PlayerScript : MonoBehaviour
 				{
 					scared--;
 				}
-				if (Input.GetButton("Jog/Sprint") && Input.GetAxis("Vertical") > 0f)
+				if (Input.GetButton("Jog/Sprint") && GetMovementAxis("Vertical", "Gamepad Vertical") > 0f)
 				{
 					if (!amrunning && stamina >= 10f)
 					{
@@ -669,7 +676,7 @@ public class PlayerScript : MonoBehaviour
 						{
 							torch.transform.rotation = Quaternion.Slerp(torch.transform.rotation, to2, Time.deltaTime * (2f + (60f - (float)sprintcooldown) / 10f));
 						}
-						if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
+						if (GetMovementAxis("Vertical", "Gamepad Vertical") != 0f || GetMovementAxis("Horizontal", "Gamepad Horizontal") != 0f)
 						{
 							stamina += 0.05f;
 						}
@@ -682,7 +689,7 @@ public class PlayerScript : MonoBehaviour
 							stamina = maxstam;
 						}
 					}
-					if (Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f)
+					if (GetMovementAxis("Vertical", "Gamepad Vertical") != 0f || GetMovementAxis("Horizontal", "Gamepad Horizontal") != 0f)
 					{
 						stepcd -= 4;
 					}
@@ -691,7 +698,9 @@ public class PlayerScript : MonoBehaviour
 						stepcd = 120;
 					}
 				}
-				if (Input.GetButton("Zoom In") && !Input.GetButton("Zoom Out") && zoom > 20f)
+				bool zoomIn = Input.GetButton("Zoom In") || Input.GetAxis("Gamepad Zoom In") > 0.5f;
+				bool zoomOut = Input.GetButton("Zoom Out") || Input.GetAxis("Gamepad Zoom Out") > 0.5f;
+				if (zoomIn && !zoomOut && zoom > 20f)
 				{
 					zoom -= 0.75f;
 					if (zoom < 20f)
@@ -700,7 +709,7 @@ public class PlayerScript : MonoBehaviour
 					}
 					zsound.volume = 1f;
 				}
-				else if (Input.GetButton("Zoom Out") && !Input.GetButton("Zoom In") && zoom < 60f)
+				else if (zoomOut && !zoomIn && zoom < 60f)
 				{
 					zoom += 0.75f;
 					if (zoom > 60f)
@@ -887,7 +896,6 @@ public class PlayerScript : MonoBehaviour
 				{
 					torch.enabled = false;
 				}
-				base.GetComponent<Camera>().farClipPlane = 80f;
 			}
 		}
 		if (!lost)
