@@ -31801,13 +31801,13 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 38a3d789dfc423448941dc1ba5536b33, type: 2}
-  m_TreeDistance: 2000
+  m_TreeDistance: 300
   m_TreeBillboardDistance: 80
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 160
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 1
+  m_HeightmapPixelError: 12
   m_SplatMapDistance: 40
   m_HeightmapMaximumLOD: 0
   m_CastShadows: 1
